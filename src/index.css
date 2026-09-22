@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-black text-white antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #27272a transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: #27272a;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-[#09090b] border border-zinc-800 rounded-2xl;
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:border-zinc-600 hover:shadow-lg hover:shadow-black/50;
+  }
+  .btn-primary {
+    @apply bg-white text-black font-bold px-5 py-2.5 rounded-xl
+           hover:bg-black hover:text-white hover:border hover:border-white
+           transition-all duration-200 active:scale-95;
+  }
+  .btn-ghost {
+    @apply bg-zinc-900 text-zinc-300 font-medium px-4 py-2 rounded-xl
+           hover:bg-zinc-800 transition-all duration-200 active:scale-95;
+  }
+  .input-field {
+    @apply bg-black border border-zinc-800 rounded-xl px-4 py-3 text-white
+           placeholder-zinc-600 focus:outline-none focus:border-white
+           focus:ring-1 focus:ring-white/30 transition-all duration-200;
+  }
+  .score-ring {
+    @apply relative inline-flex items-center justify-center;
+  }
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-zinc-500 hover:text-white
+           hover:bg-zinc-900 transition-all duration-200 cursor-pointer;
+  }
+  .nav-item-active {
+    @apply text-white bg-zinc-900;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+  50% { box-shadow: 0 0 20px 4px rgba(255, 255, 255, 0.1); }
+}
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes flipIn {
+  from { opacity: 0; transform: rotateY(90deg); }
+  to { opacity: 1; transform: rotateY(0); }
+}
+.animate-flip-in {
+  animation: flipIn 0.5s ease-out;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
